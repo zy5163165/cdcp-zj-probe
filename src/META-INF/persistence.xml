@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+     <persistence-unit name="sqlitePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>org.asb.mule.probe.framework.entity.ManagedElement</class>
+        <class>org.asb.mule.probe.framework.entity.EquipmentHolder</class>
+        <class>org.asb.mule.probe.framework.entity.Equipment</class>
+        <class>org.asb.mule.probe.framework.entity.PTP</class>
+        <class>org.asb.mule.probe.framework.entity.CTP</class>
+        <class>org.asb.mule.probe.framework.entity.C_TASK</class>
+        <class>org.asb.mule.probe.framework.entity.Section</class>
+        <class>org.asb.mule.probe.framework.entity.FlowDomainFragment</class>
+        <class>org.asb.mule.probe.framework.entity.IPCrossconnection</class>
+	    <class>org.asb.mule.probe.framework.entity.IPRoute</class>
+        <class>org.asb.mule.probe.framework.entity.TrafficTrunk</class>
+        <class>org.asb.mule.probe.framework.entity.R_TrafficTrunk_CC_Section</class>
+        <class>org.asb.mule.probe.framework.entity.R_FTP_PTP</class>
+        <class>org.asb.mule.probe.framework.entity.ProtectionGroup</class>
+        <class>org.asb.mule.probe.framework.entity.TrailNtwProtection</class>
+         <class>org.asb.mule.probe.framework.entity.ProtectionSubnetwork</class>
+         <class>org.asb.mule.probe.framework.entity.ProtectionSubnetworkLink</class>
+         <class>org.asb.mule.probe.framework.entity.TopoNode</class>
+         <class>com.alcatelsbell.nms.valueobject.pfms.PFMEntity</class>
+         <class>com.alcatelsbell.nms.valueobject.pfms.PFMData</class>
+
+        <!--<exclude-unlisted-classes>true</exclude-unlisted-classes>-->
+        <properties>
+            <!-- Scan for annotated classes and Hibernate mapping XML files
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            -->
+            <property name="hibernate.dialect" value="com.alcatelsbell.nms.ext.sqlite.SQLiteDialect"/>
+            <property name="hibernate.connection.username" value="root"/>
+
+            <!--<property name="hibernate.connection.driver_class"-->
+                      <!--value="org.sqlite.JDBC"/>-->
+            <!--<property name="hibernate.connection.password" value="root"/>-->
+            <!--<property name="hibernate.connection.url" value="jdbc:sqlite:db/smartodn.db"/>-->
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.show_sql" value="false"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+
+            <property name="hibernate.c3p0.min_size" value="10"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="1800"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+        </properties>
+    </persistence-unit>
+</persistence>

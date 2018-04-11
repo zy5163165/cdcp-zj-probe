@@ -1,0 +1,116 @@
+2013-05-21 22:13:10 [sbi]-[INFO] **********************************************
+2013-05-21 22:13:10 [sbi]-[INFO] CORBA 服务器版本信息:2.0
+2013-05-21 22:13:10 [sbi]-[INFO] **********************************************
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 0 supportedManager is : CORBA_MSTP_INV
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 1 supportedManager is : CORBA_MSTP_PRO
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 2 supportedManager is : CORBA_MSTP_SVC
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 3 supportedManager is : CORBA_MSTP_TD
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 4 supportedManager is : CORBA_VPN
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 5 supportedManager is : ControlPlane
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 6 supportedManager is : ELLManagement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 7 supportedManager is : EMS
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 8 supportedManager is : EquipmentInventory
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 9 supportedManager is : FlowdomainManagement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 10 supportedManager is : GuiCutThrough
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 11 supportedManager is : Maintenance
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 12 supportedManager is : ManagedElement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 13 supportedManager is : MultiLayerSubnetwork
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 14 supportedManager is : PerformanceManagement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 15 supportedManager is : Protection
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 16 supportedManager is : SecurityManagement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 17 supportedManager is : TopoManagement
+2013-05-21 22:13:10 [sbi]-[INFO] getsupportedManagers>> The 18 supportedManager is : TrafficConditioningProfile
+
+
+
+
+
+
+
+
+
+
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:国干虚拟网元
+[20130522 00:27:11 INFO] 
+ME[0];location=;nativeEMSName=国干虚拟网元;owner=;productName=虚拟网元;userLabel=;version=5.254.01.10
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:呼分虚拟网元
+[20130522 00:27:11 INFO] 
+ME[1];location=;nativeEMSName=呼分虚拟网元;owner=;productName=虚拟网元;userLabel=;version=5.254.01.10
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2890-火车站扩展子架2-SDH10G汇聚
+[20130522 00:27:11 INFO] 
+ME[2];location=;nativeEMSName=2890-火车站扩展子架2-SDH10G汇聚;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.18.50
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2891-乌海西部环二SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[3];location=;nativeEMSName=2891-乌海西部环二SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2892-乌海西部环二SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[4];location=;nativeEMSName=2892-乌海西部环二SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2893-巴盟西部环二SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[5];location=;nativeEMSName=2893-巴盟西部环二SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2895-阿拉善乌巴环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[6];location=;nativeEMSName=2895-阿拉善乌巴环SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2894-巴盟西部环二SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[7];location=;nativeEMSName=2894-巴盟西部环二SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2896-阿拉善乌巴环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[8];location=;nativeEMSName=2896-阿拉善乌巴环SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:NE5002
+[20130522 00:27:11 INFO] 
+ME[9];location=;nativeEMSName=NE5002;owner=;productName=虚拟网元;userLabel=;version=5.254.01.10
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2866-呼市金桥3楼SDH10G汇聚
+[20130522 00:27:11 INFO] 
+ME[10];location=;nativeEMSName=2866-呼市金桥3楼SDH10G汇聚;owner=;productName=OptiX OSN 9560;userLabel=;version=5.51.06.16
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2865-呼市火车站SDH10G汇聚
+[20130522 00:27:11 INFO] 
+ME[11];location=;nativeEMSName=2865-呼市火车站SDH10G汇聚;owner=;productName=OptiX OSN 9560;userLabel=;version=5.51.06.16
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2868-金桥三楼扩展子架1-SDH10G汇聚
+[20130522 00:27:11 INFO] 
+ME[12];location=;nativeEMSName=2868-金桥三楼扩展子架1-SDH10G汇聚;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2880-海拉尔-通海环SDH2.5G-4/5系统
+[20130522 00:27:11 INFO] 
+ME[13];location=;nativeEMSName=2880-海拉尔-通海环SDH2.5G-4/5系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2876-乌兰浩特市-通海环SDH2.5G-4/5系统
+[20130522 00:27:11 INFO] 
+ME[14];location=;nativeEMSName=2876-乌兰浩特市-通海环SDH2.5G-4/5系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2877-乌兰浩特通海环SDH2.5G-4/5系统
+[20130522 00:27:11 INFO] 
+ME[15];location=;nativeEMSName=2877-乌兰浩特通海环SDH2.5G-4/5系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2887-鄂尔多斯西部环一SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[16];location=16;nativeEMSName=2887-鄂尔多斯西部环一SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2886-鄂尔多斯西部环一SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[17];location=;nativeEMSName=2886-鄂尔多斯西部环一SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2888-包头西部环一SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[18];location=;nativeEMSName=2888-包头西部环一SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2889-包头西部环一SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[19];location=00;nativeEMSName=2889-包头西部环一SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2874-通辽OSN9560-呼通环SDH10G-3系统
+[20130522 00:27:11 INFO] 
+ME[20];location=;nativeEMSName=2874-通辽OSN9560-呼通环SDH10G-3系统;owner=;productName=OptiX OSN 9560;userLabel=;version=5.51.06.16
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2875-通辽呼通环SDH10G-3系统
+[20130522 00:27:11 INFO] 
+ME[21];location=;nativeEMSName=2875-通辽呼通环SDH10G-3系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2878-赤峰OSN7500-呼通环SDH10G-3系统
+[20130522 00:27:11 INFO] 
+ME[22];location=;nativeEMSName=2878-赤峰OSN7500-呼通环SDH10G-3系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2882-集宁OSN7500-呼锡集环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[23];location=;nativeEMSName=2882-集宁OSN7500-呼锡集环SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2883-集宁呼锡集环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[24];location=;nativeEMSName=2883-集宁呼锡集环SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2884-锡林浩特OSN7500-呼锡集环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[25];location=;nativeEMSName=2884-锡林浩特OSN7500-呼锡集环SDH10G-1系统;owner=;productName=OptiX OSN 7500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2885-锡林浩特呼锡集环SDH10G-1系统
+[20130522 00:27:11 INFO] 
+ME[26];location=;nativeEMSName=2885-锡林浩特呼锡集环SDH10G-1系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
+[20130522 00:27:11 INFO] EmsAdapter::syncAllManagedElement>>    Liuyou nativeEMSName:2881-海拉尔通海环SDH2.5G-4/5系统
+[20130522 00:27:11 INFO] 
+ME[27];location=;nativeEMSName=2881-海拉尔通海环SDH2.5G-4/5系统;owner=;productName=OptiX OSN 3500;userLabel=;version=5.21.19.31
