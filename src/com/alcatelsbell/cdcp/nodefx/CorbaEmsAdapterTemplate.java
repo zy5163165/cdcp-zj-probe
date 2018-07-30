@@ -24,6 +24,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 import com.alcatelsbell.nms.util.SysProperty;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.asb.mule.probe.framework.entity.DeviceInfo;
 import org.asb.mule.probe.framework.entity.ManagedElement;
@@ -548,7 +550,8 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
             EmsSBIClassloader classloader = new EmsSBIClassloader(getClass().getClassLoader());
             classloader.addFile(new File("../lib-nex/nex.jar"));
             Object object  = classloader.loadClass(clsName).newInstance();
-            if (object instanceof EmsExecutable)
+            log("CorbaEmsAdapterTemplate.obtain");
+            if (object instanceof EmsExecutable && !StringUtils.contains(ems.getTag1(), "New"))
                return (Serializable)executeWithLongLiveConnection(ems,(EmsExecutable)object);
 
         } else if (op.startsWith("NBIService")) {
@@ -640,7 +643,8 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
     public abstract NbiService createNbiService(CorbaSbiService corbaSbiService);
 
     private Object execute(Ems ems,EmsExecutable emsExecutable) {
-        if (kac) {
+    	log("CorbaEmsAdapterTemplate.execute");
+        if (kac && !StringUtils.contains(ems.getTag1(), "New")) {
            return  executeWithLongLiveConnection(ems,emsExecutable);
         } else {
            return  executeOld(ems, emsExecutable);
