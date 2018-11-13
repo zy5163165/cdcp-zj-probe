@@ -39,7 +39,8 @@ public class KeepAliveConnectionsManager {
     }
     public KeepAliveConnection borrowConnection(String key) {
         lock.lock();
-
+        logger.info("borrowConnection");
+        logger.info("borrowConnection-" + connections.toString());
 
         KeepAliveConnection keepAliveConnection = null;
         try {

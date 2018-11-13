@@ -10,6 +10,8 @@ public interface SbiService {
 
 	public boolean init();
 
+	public boolean initFake();
+
 	boolean isConnectState();
 
 }

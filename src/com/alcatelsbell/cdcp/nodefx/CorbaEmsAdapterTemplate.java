@@ -499,7 +499,31 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
         corbaService.init();
 
         NbiService nbiservice = createNbiService(corbaService);
+        
+//        nbiservice.setCorbaService(corbaService);
+//        nbiservice.setKey("2000");
+        return nbiservice;
+    }
+    
+    // 伪装连接，目的是获取corbaService
+    private NbiService initCorbaServiceFake(Ems ems) {
+        CorbaEms corbaEms = new CorbaEms(ems);
+        log("Ems:"+ems.getDn()+"-initCorbaService-createCorbaSbiService...");
+        CorbaSbiService corbaService = createCorbaSbiService();
+        log("Ems:"+ems.getDn()+"-initCorbaService-set...");
+        corbaService.setEmsName(corbaEms.getEmsName());
+        corbaService.setNamingServiceDns("off");
+        corbaService.setNamingServiceIp(corbaEms.getNamingServiceHost());
+        corbaService.setCorbaUrl(corbaEms.getCorbaUrl());
+        corbaService.setCorbaTree(corbaEms.getCorbaTree());
+        corbaService.setCorbaUserName(corbaEms.getCorbaUserName());
+        corbaService.setCorbaPassword(corbaEms.getCorbaPassword());
+        log("Ems:"+ems.getDn()+"-initCorbaService-init...");
+        corbaService.initFake();
 
+        log("Ems:"+ems.getDn()+"-initCorbaService-createNbiService...");
+        NbiService nbiservice = createNbiService(corbaService);
+        log("Ems:"+ems.getDn()+"-initCorbaService-return...");
 //        nbiservice.setCorbaService(corbaService);
 //        nbiservice.setKey("2000");
         return nbiservice;
@@ -643,10 +667,12 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
     public abstract NbiService createNbiService(CorbaSbiService corbaSbiService);
 
     private Object execute(Ems ems,EmsExecutable emsExecutable) {
-    	log("CorbaEmsAdapterTemplate.execute");
-        if (kac && !StringUtils.contains(ems.getTag1(), "New")) {
+    	log("CorbaEmsAdapterTemplate.execute-" + ems.getDn() + "-" + ems.getTag1());
+        if (kac || !StringUtils.contains(ems.getTag1(), "New")) {
+        	log("CorbaEmsAdapterTemplate.execute-New");
            return  executeWithLongLiveConnection(ems,emsExecutable);
         } else {
+        	log("CorbaEmsAdapterTemplate.execute-Old");
            return  executeOld(ems, emsExecutable);
         }
     }
@@ -692,21 +718,34 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
 
 
     public Object executeWithLongLiveConnection(Ems ems,EmsExecutable emsExecutable)  {
+    	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection Start..." + "-" + ems.getTag1());
         CorbaKeepAliveConnection keepAliveConnection = null;
         long waitingSec = 5;
-        while ((keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn()))
-                == null) {
-            log("Ems:"+ems.getDn()+" is not ready for job ,please wait ... "+waitingSec+" seconds");
-            try {
-                Thread.sleep(waitingSec * 1000l);
-                if (waitingSec < 3600)
-                    waitingSec = waitingSec * 2;
-            } catch (InterruptedException e) {
-
-            }
+        
+        if (StringUtils.contains(ems.getTag1(), "New")) {
+        	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection initCorbaService...");
+        	NbiService nbiService = initCorbaServiceFake(ems);
+        	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection 伪装连接...");
+        	CorbaKeepAliveConnection corbaKeepAliveConnection = new CorbaKeepAliveConnection(ems.getDn(), nbiService);
+        	log("EMS:"+ems.getDn()+" connected !");
+        	EmsStateManager.getInstance().emsOk(ems.getDn(),"connectEms");
+        	keepAliveConnectionsManager.addConnection(corbaKeepAliveConnection);
         }
+        
+        	while ((keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn()))
+                    == null) {
+                log("Ems:"+ems.getDn()+" is not ready for job ,please wait ... "+waitingSec+" seconds");
+                try {
+                    Thread.sleep(waitingSec * 1000l);
+                    if (waitingSec < 3600)
+                        waitingSec = waitingSec * 2;
+                } catch (InterruptedException e) {
+
+                }
+            }
 
         try {
+        	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection try...");
             return emsExecutable.execute(keepAliveConnection.nbiService);
         } finally {
             keepAliveConnectionsManager.returnConnection(keepAliveConnection);
