@@ -723,13 +723,16 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
         long waitingSec = 5;
         
         if (StringUtils.contains(ems.getTag1(), "New")) {
-        	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection initCorbaService...");
-        	NbiService nbiService = initCorbaServiceFake(ems);
-        	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection 伪装连接...");
-        	CorbaKeepAliveConnection corbaKeepAliveConnection = new CorbaKeepAliveConnection(ems.getDn(), nbiService);
-        	log("EMS:"+ems.getDn()+" connected !");
-        	EmsStateManager.getInstance().emsOk(ems.getDn(),"connectEms");
-        	keepAliveConnectionsManager.addConnection(corbaKeepAliveConnection);
+        	keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn());
+        	if (keepAliveConnection == null) {
+        		log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection initCorbaService...");
+            	NbiService nbiService = initCorbaServiceFake(ems);
+            	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection 伪装连接...");
+            	CorbaKeepAliveConnection corbaKeepAliveConnection = new CorbaKeepAliveConnection(ems.getDn(), nbiService);
+            	log("EMS:"+ems.getDn()+" connected !");
+            	EmsStateManager.getInstance().emsOk(ems.getDn(),"connectEms");
+            	keepAliveConnectionsManager.addConnection(corbaKeepAliveConnection);
+        	}
         }
         
         	while ((keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn()))
