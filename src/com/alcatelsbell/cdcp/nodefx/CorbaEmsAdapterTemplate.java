@@ -732,9 +732,9 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
             	log("EMS:"+ems.getDn()+" connected !");
             	EmsStateManager.getInstance().emsOk(ems.getDn(),"connectEms");
             	keepAliveConnectionsManager.addConnection(corbaKeepAliveConnection);
+            	keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn());
         	}
-        }
-        
+        } else {
         	while ((keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn()))
                     == null) {
                 log("Ems:"+ems.getDn()+" is not ready for job ,please wait ... "+waitingSec+" seconds");
@@ -746,6 +746,7 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
 
                 }
             }
+        }
 
         try {
         	log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection try...");
