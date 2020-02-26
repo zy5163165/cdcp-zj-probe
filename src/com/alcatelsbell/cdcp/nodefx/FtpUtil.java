@@ -58,7 +58,7 @@ public class FtpUtil {
 				ftpInfo.setType(FtpInfo.TYPE_FTP);
 				return ftpInfo;
 			} catch (Exception e) {
-
+				ftp.disconnect();
 				throw new Exception("上传文件:" + file.getName() + " 失败", e);
 			} finally {
 				ftp.disconnect();
@@ -69,6 +69,12 @@ public class FtpUtil {
 			ChannelSftp connect = sFtpFunc.connect(host, port, user, password);
 			// String dir = ftpRootPath + "/" + domain + "/" + vendor + "/" + city;
 			try {
+				try {
+					connect.cd("/data");
+				} catch (Exception e) {
+					connect.disconnect();
+					throw new Exception(host+"-"+port+"-"+user+"-"+password+"-"+ftpRootPath + " : " + e.getMessage());
+				}
 				connect.cd(ftpRootPath);
 				String dir = domain + "/" + vendor + "/" + city;
 				mkAndCdDir(dir, connect);
@@ -78,9 +84,9 @@ public class FtpUtil {
 				ftpInfo.setType(FtpInfo.TYPE_SFTP);
 				return ftpInfo;
 			} catch (Exception e) {
-				throw e;
+				connect.disconnect();
+				throw new Exception(host+"-"+port+"-"+user+"-"+password+"-"+ftpRootPath + " : " + e.getMessage());
 			} finally {
-
 				connect.disconnect();
 				if (connect.getSession() != null) {
 					try {
