@@ -1,4 +1,4 @@
-package org.asb.mule.probe.framework.entity;
+package org.asb.mule.probe.framework.entity.spn;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -6,35 +6,18 @@ import javax.persistence.Table;
 import com.alcatelsbell.nms.valueobject.BObject;
 
 @Entity
-@Table(name = "PTG")
+@Table(name = "TPI")
 
-public class PTG extends BObject {
-	
+public class TPI extends BObject {
 	String rmUID;
-	String nermUID;
 	String nativeName;
 	String reversionMode;
 	String type;
-	String lagrmUID;
-
-	
-	public String getLagrmUID() {
-		return lagrmUID;
-	}
-	public void setLagrmUID(String lagrmUID) {
-		this.lagrmUID = lagrmUID;
-	}
 	public String getRmUID() {
 		return rmUID;
 	}
 	public void setRmUID(String rmUID) {
 		this.rmUID = rmUID;
-	}
-	public String getNermUID() {
-		return nermUID;
-	}
-	public void setNermUID(String nermUID) {
-		this.nermUID = nermUID;
 	}
 	public String getNativeName() {
 		return nativeName;
@@ -54,6 +37,6 @@ public class PTG extends BObject {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	
 }

@@ -15,7 +15,7 @@ public class SBN extends BObject {
 	String parentSubnetrmUID;
 	String xPos;
 	String yPos;
-	
+
 	public String getRmUID() {
 		return rmUID;
 	}

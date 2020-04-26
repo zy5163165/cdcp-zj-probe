@@ -22,6 +22,8 @@ public class NEL extends BObject {
 	String state;
 	String neType;
 	String onermUID;
+	String controlPlaneIP;
+	String maxCapacity;
 	
 	public String getRmUID() {
 		return rmUID;
@@ -94,6 +96,18 @@ public class NEL extends BObject {
 	}
 	public void setOnermUID(String onermUID) {
 		this.onermUID = onermUID;
+	}
+	public String getControlPlaneIP() {
+		return controlPlaneIP;
+	}
+	public void setControlPlaneIP(String controlPlaneIP) {
+		this.controlPlaneIP = controlPlaneIP;
+	}
+	public String getMaxCapacity() {
+		return maxCapacity;
+	}
+	public void setMaxCapacity(String maxCapacity) {
+		this.maxCapacity = maxCapacity;
 	}
 	
 	

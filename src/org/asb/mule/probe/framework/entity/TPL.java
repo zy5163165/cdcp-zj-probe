@@ -19,7 +19,26 @@ public class TPL extends BObject {
 	String aEndCtprmUID;
 	String zEndCtprmUID;
 	String ctpType;
+	String rate;
+	String reality;
 
+
+
+	public String getRate() {
+		return rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	public String getReality() {
+		return reality;
+	}
+
+	public void setReality(String reality) {
+		this.reality = reality;
+	}
 
 	public String getRmUID() {
 		return rmUID;

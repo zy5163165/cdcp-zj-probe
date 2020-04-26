@@ -20,6 +20,7 @@ public class CRD extends BObject {
 	String hardwareVersion;
 	String serialNumber;
 	String serviceState;
+	String role;
 	
 	public String getRmUID() {
 		return rmUID;
@@ -56,6 +57,12 @@ public class CRD extends BObject {
 	}
 	public void setCardSubType(String cardSubType) {
 		this.cardSubType = cardSubType;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getSoftwareVersion() {
 		return softwareVersion;

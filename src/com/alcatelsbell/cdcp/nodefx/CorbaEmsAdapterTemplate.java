@@ -18,25 +18,27 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URI;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-
-import com.alcatelsbell.nms.util.SysProperty;
+import javax.management.ObjectName;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.asb.mule.probe.framework.entity.DeviceInfo;
 import org.asb.mule.probe.framework.entity.ManagedElement;
-
-
-import com.alcatelsbell.nms.valueobject.sys.Ems;
 import org.asb.mule.probe.framework.service.CorbaSbiService;
 import org.asb.mule.probe.framework.service.NbiService;
-import org.asb.mule.probe.framework.service.NbiServiceExecutor;
 
-import javax.management.*;
+import com.alcatelsbell.nms.util.SysProperty;
+import com.alcatelsbell.nms.valueobject.sys.Ems;
 
 /**
  * Author: Ronnie.Chen
@@ -416,14 +418,18 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
             NbiService nbiService = initCorbaService(ems);
             CorbaKeepAliveConnection corbaKeepAliveConnection = new CorbaKeepAliveConnection(ems.getDn(), nbiService);
 
+            // SPN走ftp服务器，伪装连接
+            if (StringUtils.contains(ems.getTag1(), "New") || StringUtils.contains(ems.getTag1(), "SPN")) {
+            	log("EMS:"+ems.getDn()+"为OMC连接 !" + ems.getTag1());
+            } else {
+            	while (!corbaKeepAliveConnection.checkConnection()) {
+                    EmsStateManager.getInstance().emsError(ems.getDn(),null,"connection failed");
+                    log ("EMS:"+ems.getDn()+" connection failed  ! try to reconnect in 300 seconds");
+                                Thread.sleep(5 * 60 * 1000l);
 
-            while (!corbaKeepAliveConnection.checkConnection()) {
-                EmsStateManager.getInstance().emsError(ems.getDn(),null,"connection failed");
-                log ("EMS:"+ems.getDn()+" connection failed  ! try to reconnect in 300 seconds");
-                            Thread.sleep(5 * 60 * 1000l);
-
-                corbaKeepAliveConnection.reconnect();
-              //  return false;
+                    corbaKeepAliveConnection.reconnect();
+                  //  return false;
+                }
             }
 
             log("EMS:"+ems.getDn()+" connected !");
@@ -722,7 +728,7 @@ public abstract class CorbaEmsAdapterTemplate implements EmsAdapterWithURISuppor
         CorbaKeepAliveConnection keepAliveConnection = null;
         long waitingSec = 5;
         
-        if (StringUtils.contains(ems.getTag1(), "New")) {
+        if (StringUtils.contains(ems.getTag1(), "New") || StringUtils.contains(ems.getTag1(), "SPN")) {
         	keepAliveConnection = (CorbaKeepAliveConnection) keepAliveConnectionsManager.borrowConnection(ems.getDn());
         	if (keepAliveConnection == null) {
         		log("Ems:"+ems.getDn()+"-executeWithLongLiveConnection initCorbaService...");
