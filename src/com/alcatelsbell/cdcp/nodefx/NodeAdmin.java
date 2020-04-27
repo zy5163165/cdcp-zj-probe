@@ -1,22 +1,21 @@
 package com.alcatelsbell.cdcp.nodefx;
 
-import com.alcatelsbell.cdcp.nodefx.nbi.httpd.HttpServer;
-import com.alcatelsbell.nms.util.SysProperty;
-import com.alcatelsbell.nms.valueobject.sys.Ems;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Logger;
-import org.asb.mule.probe.framework.entity.DeviceInfo;
-
 import java.io.File;
 import java.io.Serializable;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
+
+import org.apache.log4j.Logger;
+import org.asb.mule.probe.framework.entity.DeviceInfo;
+
+import com.alcatelsbell.cdcp.nodefx.nbi.httpd.HttpServer;
+import com.alcatelsbell.nms.util.SysProperty;
+import com.alcatelsbell.nms.valueobject.sys.Ems;
 
 /**
  * Author: Ronnie.Chen
@@ -103,6 +102,7 @@ public class NodeAdmin implements NodeAdminMBean
             for (Ems ems : newList) {
                 try {
                     EmsAdapter emsAdapter = getEmsAdapter(ems);
+                    logger.info(ems.getDn() + emsAdapter);
                     if (emsAdapter != null)
                         emsAdapter.newEms(ems);
                 } catch (Exception e) {
